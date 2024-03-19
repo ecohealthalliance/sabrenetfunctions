@@ -1,0 +1,77 @@
+---
+output: github_document
+params:
+  maintainer1: Morgan Kain
+  maintainer2: Collin Schwantes
+  maintainer_email1: kain@ecohealthalliance.org
+  maintainer_email2: schwantes@ecohealthalliance.org
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## SABRENet
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6637927)](https://doi.org/10.5281/zenodo.6637927)
+[![License (for code): MIT](https://img.shields.io/badge/License (for code)-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![License: CC0-1.0](https://img.shields.io/badge/License (for data)-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+[![License: CC-BY-4.0](https://img.shields.io/badge/License (for text)-CC_BY_4.0-blue.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+
+This respoitory contains code associated with the SABRENet project in collaboration with the University of Pretoria, South Africa. This repository is an offshoot of code originally found in sabrenet-reports that has now become a package for use in other sabrenet-XXXX repositories. This package/repository contains useful code for:
+
+-   functions that are used across sabrenet-XXXX repositories
+
+##### These functions are used in other sabrenet repositories as a downloaded package
+
+`devtools::install_github("ecohealthalliance/sabrenetfunctions")`
+
+The base is currently maintained by [`r params$maintainer1`](mailto:`r params$maintainer_email1`) and [`r params$maintainer2`](mailto:`r params$maintainer_email2`)
+
+### [Production Base](https://airtable.com/appi9YHtonEpMFuAz/tblOMNLMeu1VwYAw0/viwfBSc2GGtRTGwFb?blocks=bipcGM7IhxLmkIwxZ)
+
+### Repository Structure and Reproducibility (across all sabrenet-XXXX repositories, some may not show up in -this- repo)
+
+-   `data/` contains data from the study
+    and a data dictionary describing all variables.
+-    `auth/` contains creds for google service account. [Click here for more info](https://ecohealthalliance.github.io/eha-ma-handbook/14-cloud-computing-services.html)
+-   `R/` contains functions used in this analysis. 
+-   `reports/` contains literate code for  R Markdown reports generated in the analysis
+-   `outputs/` contains compiled reports and figures.
+
+### Function and R/ naming conventions (across all sabrenet-XXXX repositories, some may not show up in -this- repo)
+
+-   First level function prefixes:
+    -   get_ --> retrieving data from Airtable base
+        -   mostly associated with `data_input_targets`
+    -   insert_ --> Adding new rows to airtable tables with local data
+        -   mostly associated with `data_insert_targets`
+    -   modify_ --> modifying entries in existing rows in airtable tables with local data
+        -   mostly associated with `data_insert_targets`
+    -   process_ , establish_ , clean_ , summarize_ --> all data manipulation/cleaning for insert_ , plot_ , or generate_
+        - mostly part of `data_organization_targets`
+    -   calculate_ , estimate_ --> Analyses 
+        - `analysis_targets`
+    -   generate_ , plot_ , render_ --> creation of any saved output
+        - `table_targets` , `plot_targets`
+  
+-   Second stage prefixes (analysis classes)
+    - PCR   -- pipeline associated with molecular analysis of samples
+    - sero  -- pipeline associated with serology
+    - GPS   -- any spatial stuff 
+    - diversity -- estiamtes of viral diversity
+
+### Targets Framework
+
+-   Unlike other sabrenet-XXXX repositories this repository does not use the `targets` package because it just houses some functions that are meant to be sourced from within the other repositories
+
+### Versioning
+
+-   This project requires `r R.version$version.string`. This project uses the [{renv}](https://rstudio.github.io/renv/) framework to 
+    record R package dependencies and versions. Packages and versions used are recorded in 
+    `renv.lock` and code used to manage dependencies is in `renv/` and other files
+    in the root project directory.  On starting an R session in the working directory, run `renv::restore()`
+    to install R package dependencies.

@@ -1,0 +1,29 @@
+Package: sabrenetfunctions
+Title: SABRENet Functions
+Version: 0.0.0.9000
+Authors@R: 
+    person("Morgan", "Kain", , "kain@ecohealthalliance.org", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-0605-7289"))
+Description: Functions for downloading, modifying, summarizing, and backing up outputs from summarizing SABRENet and BEEZ data (which is housed in airtable).
+License: MIT + file LICENSE
+URL: https://github.com/ecohealthalliance/sabrenetfunctions
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports: 
+    airtabler,
+    base,
+    dplyr,
+    geodist,
+    googledrive,
+    here,
+    lubridate,
+    magrittr,
+    plyr,
+    purrr,
+    rlang,
+    stats,
+    tidyr,
+    tidyselect,
+    utils,
+    zoo
