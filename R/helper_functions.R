@@ -32,6 +32,7 @@ get_base_id <- function() {
   if (grep("[,]", base_id) %>% length() > 0) {
     base_id <- (base_id %>% strsplit(., ", "))[[1]] %>% as.list()
   }
+  return(base_id)
 }
 
 
