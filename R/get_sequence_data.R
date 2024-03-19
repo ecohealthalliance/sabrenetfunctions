@@ -27,7 +27,7 @@ get_sequence_data <- function(
 
   ## Get the entries in specimen data which have raw sequence data
   sequences.raw  <- specimen_data %>%
-    dplyr::select(dplyr::contains(field), id, base_id) %>%
+    dplyr::select(dplyr::contains(field) & tidyselect::where(is.list), id, base_id) %>%
     tidyr::pivot_longer(-c(id, base_id)) %>%
     dplyr::mutate(value = lapply(value, FUN = function(x) ifelse(is.null(x), NA, x)) %>% unlist()) %>%
     dplyr::filter(!is.na(value)) %>%
